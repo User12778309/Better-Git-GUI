@@ -1,6 +1,7 @@
 # library/module
 from tkinter import filedialog
 from tkinter import *
+from pathlib import Path
 
 # set class
 class File():
@@ -10,8 +11,10 @@ class File():
 
     # open file function
     def open_file(self):
-        test_file = Label(self.win,text=filedialog.askopenfilename())
-        test_file.pack()
+        self.file_open = filedialog.askopenfilename()
+        Label(self.win,text=Path(self.file_open).name).pack()
+        print(self.file_open.split(".")[1])
+
 
 
 
