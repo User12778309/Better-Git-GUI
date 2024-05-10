@@ -1,11 +1,15 @@
-# module/library
+# module/library/class
 from tkinter import *
+from File import *
 
 # set windows
 win = Tk()
 win.title("File extra directory")
 win.iconbitmap("assets/icon.ico")
 win.config(bg="#D5D5D5")
+
+# set file class
+file = File(win)
 
 # windows geometry
 win.geometry("1080x720")
@@ -19,6 +23,9 @@ file_option_button = Menubutton(option_button_frames,text="File",width=42,bg="gr
 file_option_button.pack(side=LEFT)
 file_unfold_menu = Menu(file_option_button)
 file_unfold_menu.add_command(label= str(" " * 29) + "Open file" + str(" " * 29))
+file_unfold_menu.add_command(label= str(" " * 27) + "Open folder" + str(" " * 10))
+file_unfold_menu.add_command(label= str(" " * 25) + "New directory" + str(" " * 10))
+file_unfold_menu.add_command(label= str(" " * 27) + "DEV TEST" + str(" " * 10),command=file.open_file)
 file_option_button.configure(menu=file_unfold_menu)
 
 # set "Edit" option button
