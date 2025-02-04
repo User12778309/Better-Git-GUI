@@ -1,44 +1,19 @@
-# module/library/class
-from tkinter import *
-from File import *
+import customtkinter
+import os
 
-# set windows
-win = Tk()
-win.title("File extra directory")
-win.iconbitmap("assets/icon.ico")
-win.config(bg="#D5D5D5")
+def clone():
+    git_entry_value = git_entry.get()
+    os.system("git clone " + git_entry_value)
 
-# set file class
-file = File(win)
+app = customtkinter.CTk()
+app.title("Better Git GUI")
+app.geometry("400x150")
+app.iconbitmap("assets/icon.ico")
 
-# windows geometry
-win.geometry("1080x720")
+git_entry = customtkinter.CTkEntry(master=app, placeholder_text="Enter your git link ")
+git_entry.pack(padx=20, pady=10)
 
-# set/pack option button frames
-option_button_frames = Frame(width=1080,height=32.5,bg="grey")
-option_button_frames.pack()
+clone_button = customtkinter.CTkButton(app, text="Clone", command=clone)
+clone_button.pack(padx=20, pady=20)
 
-# set "File" option button
-file_option_button = Menubutton(option_button_frames,text="File",width=42,bg="grey",bd=3,relief=RAISED,cursor="hand2",activebackground="orange",activeforeground="black")
-file_option_button.pack(side=LEFT)
-file_unfold_menu = Menu(file_option_button)
-file_unfold_menu.add_command(label= str(" " * 29) + "Open file" + str(" " * 29))
-file_unfold_menu.add_command(label= str(" " * 27) + "Open folder" + str(" " * 10))
-file_unfold_menu.add_command(label= str(" " * 25) + "New directory" + str(" " * 10))
-file_unfold_menu.add_command(label= str(" " * 27) + "DEV TEST" + str(" " * 10),command=file.open_file)
-file_option_button.configure(menu=file_unfold_menu)
-
-# set "Edit" option button
-edit_option_button = Menubutton(option_button_frames,text="Edit",width=42,bg="grey",bd=3,relief=RAISED,cursor="hand2",activebackground="orange",activeforeground="black")
-edit_option_button.pack(side=LEFT)
-
-# set "Navigate" option button
-navigate_option_button = Menubutton(option_button_frames,text="Navigate",width=42,bg="grey",bd=3,relief=RAISED,cursor="hand2",activebackground="orange",activeforeground="black")
-navigate_option_button.pack(side=LEFT)
-
-# set "Help" option button
-help_option_button = Menubutton(option_button_frames,text="Help",width=42,bg="grey",bd=3,relief=RAISED,cursor="hand2",activebackground="orange",activeforeground="black")
-help_option_button.pack(side=LEFT)
-
-# do loop
-win.mainloop()
+app.mainloop()
