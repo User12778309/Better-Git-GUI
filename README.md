@@ -1,11 +1,12 @@
-# Better Git GUI
+# Better Git GUI v1.0
 
 ```
 
 Createur:User12778309
 
 ```
+ 
 
-# Simple GUI who git clone with git url :
+# Feature :
 
-### Made with customtkinter 
+### Juste git clone command
